@@ -1,0 +1,138 @@
+<!DOCTYPE html5>
+<html>
+<head>
+	<title>CEG</title>
+	<link rel="stylesheet" type="text/css" href="../css/logincascade.css">
+	<script type="text/javascript">
+		  function validateName(){
+		  	var l = document.forms["fill"]["lastname"].value;
+		  	var f = document.forms["fill"]["firstname"].value;
+		  	var e = document.forms["fill"]["email"].value;
+		  	var p = document.forms["fill"]["Password"].value;
+
+		  	if(l== null || l== ""){
+		  		document.getElementById("p1").innerHTML = "*Please fill your Lastname!";
+				document.fill.lastname.focus();
+		  		return false;
+		  	}
+		  	if(f== null || f== ""){
+		  		document.getElementById("p2").innerHTML = "*Please fill your firstname!";
+		  		document.fill.firstname.focus();
+		  		return false;
+		  	}
+		  	if(e== null || e== ""){
+		  		document.getElementById("p3").innerHTML = "*Please fill your email!";
+		  		document.fill.email.focus();
+		  		return false;
+		  	}
+		  	if(p== null || p== ""){
+		  		document.getElementById("p4").innerHTML = "*Please fill your Password!";
+		  		document.fill.Password.focus();
+		  		return false;
+		  	}
+		}
+
+		 function validateLogin(){
+		  	var l = document.forms["fill1"]["Username"].value;
+		  	var f = document.forms["fill1"]["Password"].value;
+
+		  	if(l== null || l== ""){
+		  		document.getElementById("pp").innerHTML = "*Please input your Username!";
+		  		return false;
+		  	}
+		  	else if(f== null || f== ""){
+		  		document.getElementById("ppp").innerHTML = "*Please input your Password!";
+		  		return false;
+		  	}
+		}
+
+		function dropDown(menu_list){
+			switch (menu_list){
+				case 'login_list':
+					document.getElementById('login_list').style.display = 'block';
+					document.getElementById('Signup_list').style.display = 'none';
+					document.getElementById('Signup1_list').style.display = 'none';
+					break;
+				case 'Signup_list':
+					document.getElementById('Signup_list').style.display = 'block';
+					document.getElementById('login_list').style.display = 'none';
+					document.getElementById('Signup1_list').style.display = 'none';
+					break;
+				case 'Signup1_list':
+					document.getElementById('Signup1_list').style.display = 'block';
+					document.getElementById('login_list').style.display = 'none';
+					document.getElementById('Signup_list').style.display = 'none';
+					break;
+			}
+			return false;
+		}
+		  
+	</script>
+</head>
+<body>
+<!-- menu-button -->
+    <div class="band">
+    	<h1 class="logo" valign="top">CCONECT</h1>
+		<a href="Index.html" class="menu-button">Home</a>
+		<a href="Signup.hmtl" class="menu-button" onclick="return dropDown('login_list')">login |</a><a href="Signup.html" class="menu-button" onclick="return dropDown('Signup_list')">| Sign-Up as individual</a><a href="Signup.html" class="menu-button" onclick="return dropDown('Signup1_list')">| Sign-Up as Company</a>
+	</div>
+	
+	<!-- login form -->
+	<div class="content" id="login_list" >
+	<h2 align="center">Log In</h2>
+	<form action="" method="get" name="fill1" onsubmit="return validateLogin()" >
+		<input type="text" name="Username" class="textbox" placeholder="User Name/E-mail" required autocomplete="Username" /><br>
+		<p id="pp"></p>
+		<input type="Password" name="Password" minlength="5" class="textbox" placeholder="Password"><br>
+		<p id="ppp"></p>
+		<input type="submit" name="login" class="signup-button" value="Login">
+
+	</form>
+	</div>
+	
+	<!-- individual signup form -->
+	<div class="content" id="Signup_list">	
+	<form action="" method="post" name="fill" onsubmit="return(validateName());">
+	<h2 align="center">Sign Up</h2><br>
+	<input type="text" name="lastname" class="textbox" required autocomplete="lastname" placeholder="Last Name" /><br>
+	<p id="p1"></p>
+	<input type="text" name="firstname" class="textbox" required autocomplete="firstname" placeholder="first Name" /><br>
+	<p id="p2"></p>
+	<input type="email" name="email" class="textbox" required autocomplete="email" placeholder="E-mail Adress" /><br>
+	<p id="p3"></p>
+	<input type="Password" name="Password" minlength="5" class="textbox" placeholder="Password"><br>
+	<p id="p4"></p>
+	<input type="Password" name="Password" minlength="5" class="textbox" placeholder="Re-Enter Password"><br>
+	<input type="tel" name="Telephone" class="textbox" placeholder="Telephone Number"><br>
+	<label>Identity:<select name="gender">
+	<option>MALE</option>
+		<option>FEMALE</option>
+		<option>COMPANY</option>
+		<option>SPECIFY</option></select>
+	</label><br><br>
+	<input type="submit" name="submit" class="signup-button" value="Submit">
+	</form>
+	</div>
+<!-- company signup form -->
+	<div class="content" id="Signup1_list">
+	<form action="" method="post" name="fill" onsubmit="return(validateName());">
+	<h2 align="center">Sign Up</h2><br>
+	<input type="text" name="lastname" class="textbox" required autocomplete="lastname" placeholder="Company's Number" /><br>
+	<p id="p1"></p>
+	<br><input type="email" name="email" class="textbox" required autocomplete="email" placeholder="Company's E-mail" /><br>
+	<p id="p3"></p>
+	<input type="Password" name="Password" minlength="5" class="textbox" placeholder="Password"><br>
+	<p id="p4"></p>
+	<input type="Password" name="Password" minlength="5" class="textbox" placeholder="Re-Enter Password:"><br>
+	<input type="tel" name="Telephone" class="textbox" placeholder="Mobile Number of Company:"><br>
+	<label>Type of Company:<select name="">
+		<option >Private limited Company</option>
+		<option >Public limited Company</option>
+		<option >Joint Stock</option></select>
+	</label><br><br>
+	<label>Brief bio about company: <textarea rows="5 " cols="30"></textarea></label>
+	<input type="submit" name="submit" class="signup-button" value="Submit">
+	</form>
+	</div>
+</body>
+</html>
